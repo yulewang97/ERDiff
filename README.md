@@ -1,5 +1,21 @@
 # Extraction and recovery of spatio-temporal structure in latent dynamics alignment with diffusion model (ERDiff)
 
+## **Installation Guide**
+If using conda, [placeholder for conda installation instructions]
+
+If using venv, set up a new virtual environment by running `python3 -m venv erdiff`
+
+Then initialize it with `source erdiff/bin/activate`
+
+Install the required packages in the new environment. Requirements are specified in setup.py. Run with: 
+
+```markdown
+$ python3 -m pip install --upgrade pip
+$ python3 -m pip install -e .
+```
+
+ 
+  
 ## **Train & Align**
 
 
