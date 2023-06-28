@@ -1,0 +1,13 @@
+pytorch
+torchvision
+h5py
+seaborn
+pandas
+numpy
+matplotlib
+scipy
+scikit-learn
+jupyter
+tqdm
+einops
+POT
