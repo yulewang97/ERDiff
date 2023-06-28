@@ -65,7 +65,7 @@ print(np.shape(test_trial_vel_tide))
 
 bin_width = float(0.02) * 1000
 
-array_train_trial_dir1 = np.expand_dims(np.array((train_trial_dir1)),1)
+array_train_trial_dir1 = np.expand_dims(np.array(train_trial_dir1, dtype=object),1)
 
 train_trial_spikes_tide = train_trial_spikes_tide1
 train_trial_vel_tide = train_trial_vel_tide1
