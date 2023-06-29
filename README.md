@@ -1,15 +1,17 @@
 # Extraction and recovery of spatio-temporal structure in latent dynamics alignment with diffusion model (ERDiff)
 
-## **Installation Guide**
-If using conda, [placeholder for conda installation instructions]
+## **Setup**
 
-If using venv, set up a new virtual environment by running `python3 -m venv erdiff`
-
-Then initialize it with `source erdiff/bin/activate`
-
-Install the required packages in the new environment. Requirements are specified in setup.py. Run with: 
+To install the required dependancies using conda, run:
 
 ```markdown
+$ conda create --name erdiff --file requirements.txt
+```
+
+To install the required dependancies using Python virtual environment, run:
+```markdown
+$ python3 -m venv erdiff
+$ source erdiff/bin/activate
 $ python3 -m pip install --upgrade pip
 $ python3 -m pip install -e .
 ```
