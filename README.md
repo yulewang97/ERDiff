@@ -1,5 +1,7 @@
 # Extraction and recovery of spatio-temporal structure in latent dynamics alignment with diffusion model (ERDiff)
 
+Yule Wang, Zijing Wu, Chengrui Li, Anqi Wu
+
 ## **Setup**
 
 To install the required dependancies using conda, run:
