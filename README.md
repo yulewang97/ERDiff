@@ -1,6 +1,14 @@
-# Extraction and recovery of spatio-temporal structure in latent dynamics alignment with diffusion model (ERDiff)
+<h2>Extraction and recovery of spatio-temporal structure in latent dynamics alignment with diffusion model [NeurIPS'2023 Spotlight]</h2>
 
-Yule Wang, Zijing Wu, Chengrui Li, Anqi Wu
+Yule Wang, Zijing Wu, Chengrui Li, and Anqi Wu
+
+GaTech
+
+</div>
+
+![ERDiff_main_github](/Users/wangyule/Documents/ERDiff_NeurIPS/Figures/ERDiff_main_github.png)
+
+
 
 ## **Setup**
 
@@ -19,12 +27,12 @@ $ python3 -m pip install -e .
 ```
 
  
-  
-## **Train & Align**
+
+## **Training & Alignment**
 
 
 
-### 1. **Source Domain: Cooperative Training**
+### 1. **Source Domain: Training**
 
 ```markdown
 $ python3 VAE_Diffusion_CoTrain.py
@@ -48,8 +56,7 @@ $ python3 MLA.py
 
 
 
-## **Citation**
-
+## **Cited as**
 
 [arxiv](https://arxiv.org/abs/2306.06138)
 
