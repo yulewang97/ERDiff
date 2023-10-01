@@ -2,8 +2,6 @@
 
 <div align='center' ><font size='4'>Yule Wang, Zijing Wu, Chengrui Li, and Anqi Wu</font></div>
 
- <br/>
-
 <div align='center' ><font size='5'>Georgia Institute of Technology</font></div>
 
  <br/>  
