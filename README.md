@@ -4,7 +4,9 @@
 
 <div align='center' ><font size='5'>Georgia Institute of Technology</font></div>
 
+ <br/>  
 
+ <br/>
 
 <div align=center><img src="images/ERDiff_main_github.png", width="700"></div>
 
