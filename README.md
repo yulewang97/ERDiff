@@ -8,7 +8,7 @@
 
  <br/>
 
-<div align=center><img src="images/ERDiff_main_github.pdf", width="700"></div>
+<div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
 ## **Setup**
 
