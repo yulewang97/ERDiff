@@ -2,7 +2,7 @@
 
 <div align='center' ><font size='4'>Yule Wang, Zijing Wu, Chengrui Li, and Anqi Wu</font></div>
 
-<div align='center' ><font size='5'>GaTech</font></div>
+<div align='center' ><font size='5'>Georgia Institute of Technology</font></div>
 
 
 
