@@ -1,14 +1,12 @@
 <h2>Extraction and recovery of spatio-temporal structure in latent dynamics alignment with diffusion model [NeurIPS'2023 Spotlight]</h2>
 
-<center>Yule Wang, Zijing Wu, Chengrui Li, and Anqi Wu</center>
+<div align='center' ><font size='4'>Yule Wang, Zijing Wu, Chengrui Li, and Anqi Wu</font></div>
 
-<center>GaTech</center>
-
-</div>
-
-![ERDiff_main_github](images/ERDiff_main_github.png)
+<div align='center' ><font size='5'>GaTech</font></div>
 
 
+
+<div align=center><img src="images/ERDiff_main_github.png", width="750"></div>
 
 ## **Setup**
 
