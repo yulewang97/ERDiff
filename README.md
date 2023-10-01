@@ -10,7 +10,7 @@
 
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
-## **Setup**
+## **Environment Setup**
 
 To install the required dependancies using conda, run:
 
@@ -48,7 +48,7 @@ $ python3 MLA.py
 
 ### 
 
-## **Visualization**
+## **Latent Dynamics Visualization**
 
 ###  ![results](images/results_aligned.png)
 
