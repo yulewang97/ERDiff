@@ -6,7 +6,7 @@
 
 
 
-<div align=center><img src="images/ERDiff_main_github.png", width="750"></div>
+<div align=center><img src="images/ERDiff_main_github.png", width="700"></div>
 
 ## **Setup**
 
