@@ -72,5 +72,5 @@ $ python3 MLA.py
 
 ###  ![results](images/ERDiff_NeurIPS23_Poster_Final.png)
 
+<p style="text-align:center;">ERDiff poster for NeurIPS 2023</p>
 
-<center>ERDiff poster for NeurIPS 2023</center>
