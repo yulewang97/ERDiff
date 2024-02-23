@@ -55,20 +55,23 @@ $ python3 MLA.py
 ###  ![results](images/results_aligned.png)
 
 
-
-
-
 ## **Cited as**
 
-[arxiv](https://arxiv.org/abs/2306.06138)
+[openreview]([https://arxiv.org/abs/2306.06138](https://openreview.net/forum?id=AuXd54odxm&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DNeurIPS.cc%2F2023%2FConference%2FAuthors%23your-submissions)))
 
 ```markdown
-@article{wang2023extraction,
-  title={Extraction and Recovery of Spatio-Temporal Structure in Latent Dynamics Alignment with Diffusion Model},
+@article{wang2024extraction,
+  title={Extraction and recovery of spatio-temporal structure in latent dynamics alignment with diffusion model},
   author={Wang, Yule and Wu, Zijing and Li, Chengrui and Wu, Anqi},
-  journal={arXiv preprint arXiv:2306.06138},
-  year={2023}
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  year={2024}
+}
 }
 ```
 
 ### 
+
+###  ![results](images/results_aligned.png)
+
+ERDiff poster for NeurIPS 2023.
