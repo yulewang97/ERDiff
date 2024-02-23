@@ -72,6 +72,6 @@ $ python3 MLA.py
 
 ### 
 
-###  ![results](images/results_aligned.png)
+###  ![results](images/ERDiff_NeurIPS23_Poster_Final.png)
 
 ERDiff poster for NeurIPS 2023.
