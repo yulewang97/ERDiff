@@ -57,8 +57,6 @@ $ python3 MLA.py
 
 ## **Cited as**
 
-[openreview]([https://arxiv.org/abs/2306.06138](https://openreview.net/forum?id=AuXd54odxm&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DNeurIPS.cc%2F2023%2FConference%2FAuthors%23your-submissions)))
-
 ```markdown
 @article{wang2024extraction,
   title={Extraction and recovery of spatio-temporal structure in latent dynamics alignment with diffusion model},
@@ -74,4 +72,5 @@ $ python3 MLA.py
 
 ###  ![results](images/ERDiff_NeurIPS23_Poster_Final.png)
 
-ERDiff poster for NeurIPS 2023.
+
+<center>ERDiff poster for NeurIPS 2023</center>
