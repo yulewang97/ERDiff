@@ -6,7 +6,7 @@
 
 <div align='center' ><font size='5'>Atlanta, GA, USA</font></div>
 
-​                                                                                             <img src="/Users/ywang4138/git_repos/ERDiff/images/GTVertical_RGB.png" alt="GTVertical_RGB" style="zoom:15%;" /><img src="/Users/ywang4138/git_repos/ERDiff/images/127633222.png" alt="127633222" style="zoom:75%;" />
+​                                                                                             <img src="images/GTVertical_RGB.png" alt="GTVertical_RGB" style="zoom:15%;" /><img src="images/127633222.png" alt="127633222" style="zoom:75%;" />
 
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
