@@ -6,7 +6,7 @@
 
 <div align='center' ><font size='5'>Atlanta, GA, USA</font></div>
 
-​                                                                                            <img src="images/GTVertical_RGB.png" alt="GTVertical_RGB" width="200" /><img src="images/127633222.png" alt="GTVertical_RGB" width="150" />
+​                                                                                              <img src="images/GTVertical_RGB.png" alt="GTVertical_RGB" width="200" /><img src="images/127633222.png" alt="GTVertical_RGB" width="150" />
 
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
