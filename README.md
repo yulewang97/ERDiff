@@ -12,7 +12,7 @@
 
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
-## ** Oct.19th [Refactoring the code for now]**
+## **Oct.19th [Refactoring the code for now]**
 
 ## **Environment Setup**
 
