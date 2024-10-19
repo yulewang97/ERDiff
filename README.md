@@ -12,6 +12,8 @@
 
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
+## **[Refactoring the code for now]**
+
 ## **Environment Setup**
 
 To install the required dependancies using conda, run:
