@@ -8,11 +8,17 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                 <img src="images/GTVertical_RGB.png" alt="GTVertical_RGB" width="140" /><img src="images/127633222.png" alt="GTVertical_RGB" width="120" />
 
-## 
+
 
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
-## **Oct.19th [Refactoring the code for now]**
+## **Oct.19th **
+
+```
+Adding nn.init.eye_(self.low_d_readin_t.weight) for the linear probing layers for further alignment stability. 
+```
+
+
 
 ## **Environment Setup**
 
@@ -32,25 +38,7 @@ $ python3 -m pip install -e .
 
  
 
-## **Training & Alignment**
 
-
-
-### 1. **Source Domain: Training**
-
-```markdown
-$ python3 VAE_Diffusion_CoTrain.py
-```
-
-
-
-### 2. Target Domain: Maximum Likelihood Alignment
-
-```markdown
-$ python3 MLA.py
-```
-
-### 
 
 ## **Latent Dynamics Visualization**
 
