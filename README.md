@@ -12,7 +12,7 @@
 
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
-## Oct.19th 
+## Oct.19th Update 
 
 ```
 Adding nn.init.eye_(self.low_d_readin_t.weight) for the linear probing layers for further alignment stability. 
