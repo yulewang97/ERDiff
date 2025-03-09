@@ -1,4 +1,4 @@
-<h2>Extraction and recovery of spatio-temporal structure in latent dynamics alignment with diffusion models [NeurIPS'2023 Spotlight]</h2>
+<h2>Extraction and Recovery of Spatio-Temporal Structure in Latent Dynamics Alignment with Diffusion Models [NeurIPS'2023 Spotlight]</h2>
 
 <div align='center' ><font size='4'>Yule Wang, Zijing Wu, Chengrui Li, and Anqi Wu</font></div>
 
