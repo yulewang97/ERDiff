@@ -49,7 +49,7 @@ To perform the diffusion-guided maximum likelihood alignment, run:
 cd scripts/ && sbatch run_mla.sh
 ```
 
-
+The alignment process across epochs can be viewed in `scripts/mla_erdiff_398637.out`.
 
 ## **Latent Dynamics Visualization**
 
