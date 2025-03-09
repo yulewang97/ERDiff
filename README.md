@@ -12,7 +12,8 @@
 
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
-## Mar.8th Update 
+
+## March 8 Update  
 
 A new tag **v1.0.1** has been created.
 
@@ -27,16 +28,16 @@ A new tag **v1.0.1** has been created.
 
 To install the required dependancies using conda, run:
 
-```markdown
-$ conda create --name erdiff --file requirements.txt
+```bash
+conda create --name erdiff --file requirements.txt
 ```
 
 To install the required dependancies using Python virtual environment, run:
-```markdown
-$ python3 -m venv erdiff
-$ source erdiff/bin/activate
-$ python3 -m pip install --upgrade pip
-$ python3 -m pip install -e .
+```bash
+python3 -m venv erdiff
+source erdiff/bin/activate
+python3 -m pip install --upgrade pip
+python3 -m pip install -e .
 ```
 
 To train the diffusion model on the source session, run:
@@ -51,7 +52,7 @@ cd scripts/ && sbatch run_mla.sh
 
 The alignment process across epochs can be viewed in `scripts/mla_erdiff_398637.out`.
 
-## **Latent Dynamics Visualization**
+## **Neural Latent Trajectories and their Dynamics Visualization**
 
 ###  ![results](images/results_aligned.png)
 
