@@ -4,7 +4,7 @@ from functools import partial
 
 import matplotlib.pyplot as plt
 from tqdm.auto import tqdm
-from einops import rearrange
+
 
 import torch
 from torch import nn, einsum
@@ -22,14 +22,18 @@ from torch.optim import Adam
 
 import numpy as np
 
+# Hyper-parameters
+l_rate = 1e-3
+n_epochs = 500
+timesteps = 100
 
-diff_layers = 2 
-diff_channels = 16
+diff_layers = 4
+diff_channels = 32
 diff_nheads = 4
 diff_embedding_dim = 32
 diff_beta_start = 0.0001
 diff_beta_end = 0.5
-diff_num_steps = 50
+diff_num_steps = 200
 diff_cond_dim = 144
 
 def get_torch_trans(heads=8, layers=1, channels=64):
@@ -178,9 +182,17 @@ def quadratic_beta_schedule(timesteps):
     return torch.linspace(beta_start**0.5, beta_end**0.5, timesteps) ** 2
 
 
+def cosine_beta_schedule(timesteps, s=0.008):
+    t = torch.linspace(0, timesteps, steps=timesteps + 1)
+    alphas_cumprod = torch.cos(((t / timesteps) + s) / (1 + s) * (math.pi / 2)) ** 2
+    betas = 1 - (alphas_cumprod[1:] / alphas_cumprod[:-1])
+    return torch.clip(betas, 0, 0.999)
+
+betas = cosine_beta_schedule(timesteps=diff_num_steps)
+
 
 # define beta schedule
-betas = quadratic_beta_schedule(timesteps=diff_num_steps)
+# betas = quadratic_beta_schedule(timesteps=diff_num_steps)
 
 # define alphas 
 alphas = 1. - betas
@@ -222,6 +234,65 @@ def p_losses(denoise_model, x_start, t, noise=None):
     x_noisy = q_sample(x_start=x_start, t=t, noise=noise)
     predicted_noise = denoise_model(x_noisy, t)
 
-    loss = F.l1_loss(noise, predicted_noise)
+    loss = F.mse_loss(noise, predicted_noise)
+    # loss = 0.7 * F.l1_loss(predicted_noise, noise) + 0.3 * F.mse_loss(predicted_noise, noise)
 
     return loss
+
+
+@torch.no_grad()
+def p_sample(model, x, t, t_index):
+    betas_t = extract(betas, t, x.shape)
+    sqrt_one_minus_alphas_cumprod_t = extract(
+        sqrt_one_minus_alphas_cumprod, t, x.shape
+    )
+    sqrt_recip_alphas_t = extract(sqrt_recip_alphas, t, x.shape)
+    
+
+    model_mean = sqrt_recip_alphas_t * (
+        x - betas_t * model(x, t) / sqrt_one_minus_alphas_cumprod_t
+    )
+
+    if t_index == 0:
+        return model_mean
+    else:
+        posterior_variance_t = extract(posterior_variance, t, x.shape)
+        noise = torch.randn_like(x)
+        # Algorithm 2 line 4:
+        return model_mean + torch.sqrt(posterior_variance_t) * noise 
+
+
+@torch.no_grad()
+def p_sample_loop(model, shape):
+    device = next(model.parameters()).device
+
+    b = shape[0]
+
+    img = torch.randn(shape, device=device)
+    imgs = []
+
+    for i in tqdm(reversed(range(0, timesteps)), desc='sampling loop time step', total=timesteps):
+        img = p_sample(model, img, torch.full((b,), i, device=device, dtype=torch.long), i)
+    # imgs.append(img.cpu().numpy())
+    return img.cpu().numpy()
+
+
+
+class EMA:
+    def __init__(self, model, decay=0.995):
+        self.model = model
+        self.decay = decay
+        
+
+        device = next(model.parameters()).device  
+
+        self.shadow = {k: v.clone().detach().to(device) for k, v in model.named_parameters()}
+    
+    def update(self, model):
+        with torch.no_grad():
+            for k, v in model.named_parameters():
+                self.shadow[k] = self.shadow[k].to(v.device)  
+                self.shadow[k] = self.decay * self.shadow[k] + (1.0 - self.decay) * v.clone().detach()
+
+    def apply(self, model):
+        model.load_state_dict(self.shadow, strict=False) 

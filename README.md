@@ -12,11 +12,14 @@
 
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
-## Oct.19th Update 
+## Mar.8th Update 
 
-```
-Adding nn.init.eye_(self.low_d_readin_t.weight) for the linear probing layers for further alignment stability. 
-```
+A new tag **v1.0.1** has been created.
+
+### Changes:
+- Initialized linear probing layers with an identity matrix to enhance alignment stability.  
+- Improved diffusion model stability using data augmentation and `cosine_beta_schedule`.  
+- Resolved NaN issues for better numerical stability.  
 
 
 
@@ -36,7 +39,15 @@ $ python3 -m pip install --upgrade pip
 $ python3 -m pip install -e .
 ```
 
- 
+To train the diffusion model on the source session, run:
+```bash
+cd scripts/ && sbatch run_diffusion_train.sh
+```
+
+To perform the diffusion-guided maximum likelihood alignment, run:
+```bash
+cd scripts/ && sbatch run_mla.sh
+```
 
 
 
@@ -46,6 +57,7 @@ $ python3 -m pip install -e .
 
 
 ## **Cited as**
+If you find the code useful for your research, please consider citing our work:
 
 ```markdown
 @article{wang2024extraction,
@@ -57,7 +69,7 @@ $ python3 -m pip install -e .
 }
 ```
 
-### **ERDiff Poster for NeurIPS 2023**
+### **Poster for NeurIPS 2023**
 
 ###  ![results](images/ERDiff_NeurIPS23_Poster_Final.png)
 

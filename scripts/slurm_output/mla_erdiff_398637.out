@@ -1,0 +1,820 @@
+Config Data: {'learning_rate': 0.003, 'batch_size': 64, 'appro_alpha': 0.1, 'ot_weight': 1.0, 'epoches': 1000, 'seed': 2024}
+device: cuda
+spike_day_0 shape: torch.Size([168, 14, 187]), spike_day_k shape: torch.Size([168, 14, 172])
+torch.Size([168, 14, 8])
+Epoch of: 0 Perf:
+Aligned R-Squared: -62.3016 | Aligned RMSE: 13.1242
+--------------------
+Best_Metric at 0 is : -62.30158434341969
+torch.Size([168, 14, 8])
+Epoch of: 5 Perf:
+Aligned R-Squared: -50.6386 | Aligned RMSE: 12.5970
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 10 Perf:
+Aligned R-Squared: -38.3350 | Aligned RMSE: 12.0492
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 15 Perf:
+Aligned R-Squared: -30.6817 | Aligned RMSE: 11.6865
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 20 Perf:
+Aligned R-Squared: -23.7985 | Aligned RMSE: 11.3585
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 25 Perf:
+Aligned R-Squared: -17.1188 | Aligned RMSE: 11.0382
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 30 Perf:
+Aligned R-Squared: -12.2100 | Aligned RMSE: 10.7985
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 35 Perf:
+Aligned R-Squared: -7.8110 | Aligned RMSE: 10.5819
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 40 Perf:
+Aligned R-Squared: -5.1123 | Aligned RMSE: 10.4464
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 45 Perf:
+Aligned R-Squared: -3.8953 | Aligned RMSE: 10.3829
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 50 Perf:
+Aligned R-Squared: -2.3541 | Aligned RMSE: 10.3037
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 55 Perf:
+Aligned R-Squared: -1.7532 | Aligned RMSE: 10.2709
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 60 Perf:
+Aligned R-Squared: -0.0557 | Aligned RMSE: 10.1833
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 65 Perf:
+Aligned R-Squared: -0.1122 | Aligned RMSE: 10.1841
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 70 Perf:
+Aligned R-Squared: 1.2888 | Aligned RMSE: 10.1119
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 75 Perf:
+Aligned R-Squared: 1.7774 | Aligned RMSE: 10.0862
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 80 Perf:
+Aligned R-Squared: 2.7207 | Aligned RMSE: 10.0375
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 85 Perf:
+Aligned R-Squared: 3.3263 | Aligned RMSE: 10.0060
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 90 Perf:
+Aligned R-Squared: 3.7247 | Aligned RMSE: 9.9857
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 95 Perf:
+Aligned R-Squared: 4.6017 | Aligned RMSE: 9.9395
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 100 Perf:
+Aligned R-Squared: 5.4763 | Aligned RMSE: 9.8940
+--------------------
+Best_Metric at 100 is : 5.47627764146349
+torch.Size([168, 14, 8])
+Epoch of: 105 Perf:
+Aligned R-Squared: 6.5002 | Aligned RMSE: 9.8396
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 110 Perf:
+Aligned R-Squared: 6.9458 | Aligned RMSE: 9.8165
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 115 Perf:
+Aligned R-Squared: 7.4310 | Aligned RMSE: 9.7903
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 120 Perf:
+Aligned R-Squared: 8.6766 | Aligned RMSE: 9.7247
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 125 Perf:
+Aligned R-Squared: 9.2297 | Aligned RMSE: 9.6948
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 130 Perf:
+Aligned R-Squared: 9.9871 | Aligned RMSE: 9.6548
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 135 Perf:
+Aligned R-Squared: 10.4610 | Aligned RMSE: 9.6295
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 140 Perf:
+Aligned R-Squared: 10.8739 | Aligned RMSE: 9.6069
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 145 Perf:
+Aligned R-Squared: 11.4308 | Aligned RMSE: 9.5762
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 150 Perf:
+Aligned R-Squared: 11.4291 | Aligned RMSE: 9.5768
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 155 Perf:
+Aligned R-Squared: 10.3232 | Aligned RMSE: 9.6333
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 160 Perf:
+Aligned R-Squared: 11.3045 | Aligned RMSE: 9.5824
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 165 Perf:
+Aligned R-Squared: 11.6607 | Aligned RMSE: 9.5630
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 170 Perf:
+Aligned R-Squared: 11.9012 | Aligned RMSE: 9.5499
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 175 Perf:
+Aligned R-Squared: 12.0632 | Aligned RMSE: 9.5407
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 180 Perf:
+Aligned R-Squared: 12.3992 | Aligned RMSE: 9.5219
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 185 Perf:
+Aligned R-Squared: 12.7773 | Aligned RMSE: 9.5014
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 190 Perf:
+Aligned R-Squared: 12.8804 | Aligned RMSE: 9.4949
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 195 Perf:
+Aligned R-Squared: 12.7782 | Aligned RMSE: 9.5008
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 200 Perf:
+Aligned R-Squared: 13.0613 | Aligned RMSE: 9.4849
+--------------------
+Best_Metric at 200 is : 13.061322565934692
+torch.Size([168, 14, 8])
+Epoch of: 205 Perf:
+Aligned R-Squared: 13.1371 | Aligned RMSE: 9.4800
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 210 Perf:
+Aligned R-Squared: 12.8661 | Aligned RMSE: 9.4945
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 215 Perf:
+Aligned R-Squared: 13.0784 | Aligned RMSE: 9.4825
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 220 Perf:
+Aligned R-Squared: 12.6287 | Aligned RMSE: 9.5078
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 225 Perf:
+Aligned R-Squared: 13.3677 | Aligned RMSE: 9.4642
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 230 Perf:
+Aligned R-Squared: 13.5953 | Aligned RMSE: 9.4537
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 235 Perf:
+Aligned R-Squared: 13.3466 | Aligned RMSE: 9.4680
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 240 Perf:
+Aligned R-Squared: 13.6734 | Aligned RMSE: 9.4487
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 245 Perf:
+Aligned R-Squared: 13.7177 | Aligned RMSE: 9.4456
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 250 Perf:
+Aligned R-Squared: 13.3287 | Aligned RMSE: 9.4677
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 255 Perf:
+Aligned R-Squared: 13.3587 | Aligned RMSE: 9.4662
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 260 Perf:
+Aligned R-Squared: 13.6205 | Aligned RMSE: 9.4506
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 265 Perf:
+Aligned R-Squared: 13.0663 | Aligned RMSE: 9.4816
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 270 Perf:
+Aligned R-Squared: 13.1683 | Aligned RMSE: 9.4752
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 275 Perf:
+Aligned R-Squared: 13.7367 | Aligned RMSE: 9.4443
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 280 Perf:
+Aligned R-Squared: 13.3333 | Aligned RMSE: 9.4669
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 285 Perf:
+Aligned R-Squared: 13.5207 | Aligned RMSE: 9.4565
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 290 Perf:
+Aligned R-Squared: 13.5860 | Aligned RMSE: 9.4523
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 295 Perf:
+Aligned R-Squared: 13.8245 | Aligned RMSE: 9.4396
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 300 Perf:
+Aligned R-Squared: 13.4502 | Aligned RMSE: 9.4599
+--------------------
+Best_Metric at 300 is : 13.824493140427341
+torch.Size([168, 14, 8])
+Epoch of: 305 Perf:
+Aligned R-Squared: 13.6290 | Aligned RMSE: 9.4501
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 310 Perf:
+Aligned R-Squared: 13.2717 | Aligned RMSE: 9.4697
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 315 Perf:
+Aligned R-Squared: 14.2036 | Aligned RMSE: 9.4186
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 320 Perf:
+Aligned R-Squared: 12.9018 | Aligned RMSE: 9.4927
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 325 Perf:
+Aligned R-Squared: 14.4247 | Aligned RMSE: 9.4051
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 330 Perf:
+Aligned R-Squared: 14.0564 | Aligned RMSE: 9.4264
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 335 Perf:
+Aligned R-Squared: 14.1991 | Aligned RMSE: 9.4185
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 340 Perf:
+Aligned R-Squared: 14.5052 | Aligned RMSE: 9.4016
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 345 Perf:
+Aligned R-Squared: 14.0425 | Aligned RMSE: 9.4286
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 350 Perf:
+Aligned R-Squared: 14.2149 | Aligned RMSE: 9.4181
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 355 Perf:
+Aligned R-Squared: 14.2697 | Aligned RMSE: 9.4148
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 360 Perf:
+Aligned R-Squared: 14.2692 | Aligned RMSE: 9.4144
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 365 Perf:
+Aligned R-Squared: 14.1909 | Aligned RMSE: 9.4201
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 370 Perf:
+Aligned R-Squared: 14.6426 | Aligned RMSE: 9.3950
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 375 Perf:
+Aligned R-Squared: 14.3325 | Aligned RMSE: 9.4125
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 380 Perf:
+Aligned R-Squared: 14.1394 | Aligned RMSE: 9.4220
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 385 Perf:
+Aligned R-Squared: 14.2468 | Aligned RMSE: 9.4169
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 390 Perf:
+Aligned R-Squared: 14.2743 | Aligned RMSE: 9.4150
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 395 Perf:
+Aligned R-Squared: 14.6666 | Aligned RMSE: 9.3915
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 400 Perf:
+Aligned R-Squared: 14.1925 | Aligned RMSE: 9.4189
+--------------------
+Best_Metric at 400 is : 14.666600556895492
+torch.Size([168, 14, 8])
+Epoch of: 405 Perf:
+Aligned R-Squared: 14.3233 | Aligned RMSE: 9.4125
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 410 Perf:
+Aligned R-Squared: 14.8095 | Aligned RMSE: 9.3867
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 415 Perf:
+Aligned R-Squared: 14.1047 | Aligned RMSE: 9.4258
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 420 Perf:
+Aligned R-Squared: 14.8235 | Aligned RMSE: 9.3840
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 425 Perf:
+Aligned R-Squared: 14.6019 | Aligned RMSE: 9.3976
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 430 Perf:
+Aligned R-Squared: 15.0455 | Aligned RMSE: 9.3706
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 435 Perf:
+Aligned R-Squared: 14.5513 | Aligned RMSE: 9.4007
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 440 Perf:
+Aligned R-Squared: 13.8329 | Aligned RMSE: 9.4405
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 445 Perf:
+Aligned R-Squared: 14.4905 | Aligned RMSE: 9.4016
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 450 Perf:
+Aligned R-Squared: 14.6501 | Aligned RMSE: 9.3946
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 455 Perf:
+Aligned R-Squared: 14.5290 | Aligned RMSE: 9.4010
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 460 Perf:
+Aligned R-Squared: 14.1077 | Aligned RMSE: 9.4255
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 465 Perf:
+Aligned R-Squared: 14.8140 | Aligned RMSE: 9.3850
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 470 Perf:
+Aligned R-Squared: 14.0251 | Aligned RMSE: 9.4307
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 475 Perf:
+Aligned R-Squared: 14.4444 | Aligned RMSE: 9.4073
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 480 Perf:
+Aligned R-Squared: 14.8704 | Aligned RMSE: 9.3810
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 485 Perf:
+Aligned R-Squared: 14.9239 | Aligned RMSE: 9.3793
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 490 Perf:
+Aligned R-Squared: 15.1808 | Aligned RMSE: 9.3648
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 495 Perf:
+Aligned R-Squared: 14.3751 | Aligned RMSE: 9.4106
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 500 Perf:
+Aligned R-Squared: 14.4603 | Aligned RMSE: 9.4049
+--------------------
+Best_Metric at 500 is : 15.180771082766743
+torch.Size([168, 14, 8])
+Epoch of: 505 Perf:
+Aligned R-Squared: 14.4875 | Aligned RMSE: 9.4040
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 510 Perf:
+Aligned R-Squared: 15.0573 | Aligned RMSE: 9.3705
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 515 Perf:
+Aligned R-Squared: 15.4957 | Aligned RMSE: 9.3535
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 520 Perf:
+Aligned R-Squared: 15.8232 | Aligned RMSE: 9.3351
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 525 Perf:
+Aligned R-Squared: 16.0857 | Aligned RMSE: 9.3204
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 530 Perf:
+Aligned R-Squared: 15.9848 | Aligned RMSE: 9.3258
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 535 Perf:
+Aligned R-Squared: 16.1620 | Aligned RMSE: 9.3156
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 540 Perf:
+Aligned R-Squared: 16.0639 | Aligned RMSE: 9.3213
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 545 Perf:
+Aligned R-Squared: 16.0104 | Aligned RMSE: 9.3240
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 550 Perf:
+Aligned R-Squared: 15.9178 | Aligned RMSE: 9.3295
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 555 Perf:
+Aligned R-Squared: 15.9635 | Aligned RMSE: 9.3268
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 560 Perf:
+Aligned R-Squared: 16.2181 | Aligned RMSE: 9.3120
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 565 Perf:
+Aligned R-Squared: 16.0766 | Aligned RMSE: 9.3203
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 570 Perf:
+Aligned R-Squared: 16.3383 | Aligned RMSE: 9.3054
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 575 Perf:
+Aligned R-Squared: 16.0242 | Aligned RMSE: 9.3225
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 580 Perf:
+Aligned R-Squared: 16.4056 | Aligned RMSE: 9.3012
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 585 Perf:
+Aligned R-Squared: 16.1660 | Aligned RMSE: 9.3147
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 590 Perf:
+Aligned R-Squared: 16.2297 | Aligned RMSE: 9.3112
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 595 Perf:
+Aligned R-Squared: 16.0634 | Aligned RMSE: 9.3208
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 600 Perf:
+Aligned R-Squared: 15.8104 | Aligned RMSE: 9.3356
+--------------------
+Best_Metric at 600 is : 16.405615442622235
+torch.Size([168, 14, 8])
+Epoch of: 605 Perf:
+Aligned R-Squared: 16.2337 | Aligned RMSE: 9.3106
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 610 Perf:
+Aligned R-Squared: 15.9460 | Aligned RMSE: 9.3270
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 615 Perf:
+Aligned R-Squared: 16.4339 | Aligned RMSE: 9.2995
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 620 Perf:
+Aligned R-Squared: 16.1799 | Aligned RMSE: 9.3138
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 625 Perf:
+Aligned R-Squared: 16.1216 | Aligned RMSE: 9.3169
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 630 Perf:
+Aligned R-Squared: 16.0502 | Aligned RMSE: 9.3210
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 635 Perf:
+Aligned R-Squared: 16.2099 | Aligned RMSE: 9.3120
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 640 Perf:
+Aligned R-Squared: 16.1029 | Aligned RMSE: 9.3179
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 645 Perf:
+Aligned R-Squared: 16.0879 | Aligned RMSE: 9.3188
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 650 Perf:
+Aligned R-Squared: 15.8792 | Aligned RMSE: 9.3302
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 655 Perf:
+Aligned R-Squared: 16.0438 | Aligned RMSE: 9.3210
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 660 Perf:
+Aligned R-Squared: 16.0023 | Aligned RMSE: 9.3236
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 665 Perf:
+Aligned R-Squared: 16.4450 | Aligned RMSE: 9.2992
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 670 Perf:
+Aligned R-Squared: 16.0976 | Aligned RMSE: 9.3180
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 675 Perf:
+Aligned R-Squared: 15.9779 | Aligned RMSE: 9.3248
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 680 Perf:
+Aligned R-Squared: 16.0960 | Aligned RMSE: 9.3184
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 685 Perf:
+Aligned R-Squared: 16.1841 | Aligned RMSE: 9.3131
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 690 Perf:
+Aligned R-Squared: 16.3206 | Aligned RMSE: 9.3056
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 695 Perf:
+Aligned R-Squared: 16.0331 | Aligned RMSE: 9.3222
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 700 Perf:
+Aligned R-Squared: 16.0713 | Aligned RMSE: 9.3195
+--------------------
+Best_Metric at 700 is : 16.44504212519258
+torch.Size([168, 14, 8])
+Epoch of: 705 Perf:
+Aligned R-Squared: 16.2366 | Aligned RMSE: 9.3106
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 710 Perf:
+Aligned R-Squared: 16.0267 | Aligned RMSE: 9.3222
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 715 Perf:
+Aligned R-Squared: 16.3363 | Aligned RMSE: 9.3051
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 720 Perf:
+Aligned R-Squared: 16.2520 | Aligned RMSE: 9.3091
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 725 Perf:
+Aligned R-Squared: 16.4086 | Aligned RMSE: 9.3008
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 730 Perf:
+Aligned R-Squared: 16.1608 | Aligned RMSE: 9.3144
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 735 Perf:
+Aligned R-Squared: 16.3027 | Aligned RMSE: 9.3060
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 740 Perf:
+Aligned R-Squared: 16.2701 | Aligned RMSE: 9.3085
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 745 Perf:
+Aligned R-Squared: 16.0152 | Aligned RMSE: 9.3234
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 750 Perf:
+Aligned R-Squared: 16.5348 | Aligned RMSE: 9.2935
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 755 Perf:
+Aligned R-Squared: 16.4115 | Aligned RMSE: 9.3009
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 760 Perf:
+Aligned R-Squared: 16.4205 | Aligned RMSE: 9.3006
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 765 Perf:
+Aligned R-Squared: 16.0065 | Aligned RMSE: 9.3234
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 770 Perf:
+Aligned R-Squared: 16.5319 | Aligned RMSE: 9.2941
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 775 Perf:
+Aligned R-Squared: 16.0660 | Aligned RMSE: 9.3197
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 780 Perf:
+Aligned R-Squared: 16.4002 | Aligned RMSE: 9.3011
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 785 Perf:
+Aligned R-Squared: 16.4511 | Aligned RMSE: 9.2989
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 790 Perf:
+Aligned R-Squared: 16.1994 | Aligned RMSE: 9.3129
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 795 Perf:
+Aligned R-Squared: 16.2802 | Aligned RMSE: 9.3076
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 800 Perf:
+Aligned R-Squared: 16.0765 | Aligned RMSE: 9.3194
+--------------------
+Best_Metric at 800 is : 16.534790694250006
+torch.Size([168, 14, 8])
+Epoch of: 805 Perf:
+Aligned R-Squared: 15.5893 | Aligned RMSE: 9.3461
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 810 Perf:
+Aligned R-Squared: 16.3624 | Aligned RMSE: 9.3031
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 815 Perf:
+Aligned R-Squared: 16.3185 | Aligned RMSE: 9.3056
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 820 Perf:
+Aligned R-Squared: 16.2311 | Aligned RMSE: 9.3112
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 825 Perf:
+Aligned R-Squared: 16.2147 | Aligned RMSE: 9.3119
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 830 Perf:
+Aligned R-Squared: 16.5016 | Aligned RMSE: 9.2957
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 835 Perf:
+Aligned R-Squared: 16.4045 | Aligned RMSE: 9.3010
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 840 Perf:
+Aligned R-Squared: 16.6566 | Aligned RMSE: 9.2873
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 845 Perf:
+Aligned R-Squared: 16.6486 | Aligned RMSE: 9.2873
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 850 Perf:
+Aligned R-Squared: 16.4470 | Aligned RMSE: 9.2987
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 855 Perf:
+Aligned R-Squared: 16.6277 | Aligned RMSE: 9.2889
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 860 Perf:
+Aligned R-Squared: 16.5771 | Aligned RMSE: 9.2917
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 865 Perf:
+Aligned R-Squared: 16.0213 | Aligned RMSE: 9.3232
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 870 Perf:
+Aligned R-Squared: 16.3523 | Aligned RMSE: 9.3047
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 875 Perf:
+Aligned R-Squared: 16.4492 | Aligned RMSE: 9.2990
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 880 Perf:
+Aligned R-Squared: 16.3941 | Aligned RMSE: 9.3020
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 885 Perf:
+Aligned R-Squared: 16.0516 | Aligned RMSE: 9.3211
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 890 Perf:
+Aligned R-Squared: 16.2416 | Aligned RMSE: 9.3104
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 895 Perf:
+Aligned R-Squared: 16.4544 | Aligned RMSE: 9.2985
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 900 Perf:
+Aligned R-Squared: 16.7136 | Aligned RMSE: 9.2849
+--------------------
+Best_Metric at 900 is : 16.713597070943
+torch.Size([168, 14, 8])
+Epoch of: 905 Perf:
+Aligned R-Squared: 16.4697 | Aligned RMSE: 9.2976
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 910 Perf:
+Aligned R-Squared: 16.4731 | Aligned RMSE: 9.2981
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 915 Perf:
+Aligned R-Squared: 16.5619 | Aligned RMSE: 9.2929
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 920 Perf:
+Aligned R-Squared: 16.6457 | Aligned RMSE: 9.2880
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 925 Perf:
+Aligned R-Squared: 16.6374 | Aligned RMSE: 9.2883
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 930 Perf:
+Aligned R-Squared: 16.9068 | Aligned RMSE: 9.2734
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 935 Perf:
+Aligned R-Squared: 16.7861 | Aligned RMSE: 9.2801
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 940 Perf:
+Aligned R-Squared: 16.8933 | Aligned RMSE: 9.2742
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 945 Perf:
+Aligned R-Squared: 16.6737 | Aligned RMSE: 9.2861
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 950 Perf:
+Aligned R-Squared: 16.7776 | Aligned RMSE: 9.2808
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 955 Perf:
+Aligned R-Squared: 16.7935 | Aligned RMSE: 9.2795
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 960 Perf:
+Aligned R-Squared: 16.5400 | Aligned RMSE: 9.2938
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 965 Perf:
+Aligned R-Squared: 16.6856 | Aligned RMSE: 9.2861
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 970 Perf:
+Aligned R-Squared: 17.0041 | Aligned RMSE: 9.2681
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 975 Perf:
+Aligned R-Squared: 16.4437 | Aligned RMSE: 9.2997
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 980 Perf:
+Aligned R-Squared: 16.6158 | Aligned RMSE: 9.2904
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 985 Perf:
+Aligned R-Squared: 17.0605 | Aligned RMSE: 9.2651
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 990 Perf:
+Aligned R-Squared: 16.8849 | Aligned RMSE: 9.2754
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 995 Perf:
+Aligned R-Squared: 16.8673 | Aligned RMSE: 9.2761
+--------------------
+torch.Size([168, 14, 8])
+Epoch of: 999 Perf:
+Aligned R-Squared: 16.8913 | Aligned RMSE: 9.2752
+--------------------
+Best_Metric at 999 is : 17.060488249742768
+[1;34mwandb[0m: 🚀 View run [33mERDiff_MLA_0308_1949[0m at: [34mhttps://wandb.ai/1220734650-georgia-institute-of-technology/ERDiff_MLA/runs/wrktfb0j[0m
+[1;34mwandb[0m: Find logs at: [1;35m../../../../../../coc/flash12/ywang4138/ERDiff/scripts/wandb/run-20250308_194902-wrktfb0j/logs[0m

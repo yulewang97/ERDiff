@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import os
 import yaml
 import sys
+from datetime import datetime
 from tqdm import tqdm_notebook
 from sklearn.metrics import r2_score
 from sklearn.metrics import explained_variance_score
@@ -31,9 +32,9 @@ sys.path.append(parent_dir)
 
 import logging
 
-from model_functions.Diffusion import *
-from model_functions.VAE import *
-from model_functions.ERDiff_utils import *
+from model_functions.diffusion import *
+from model_functions.vae import *
+from model_functions.erdiff_utils import *
 
 logger = logging.getLogger('train_logger')
 logger.setLevel(level=logging.INFO)
@@ -46,12 +47,6 @@ logger.addHandler(handler)
 logger.info('python logging test')
 
 import pickle
-
-
-# Hyper-parameters
-l_rate = 1e-3
-n_epochs = 400
-timesteps = 40
 
 
 # Training``
@@ -67,10 +62,13 @@ setup_seed(2024)
 
 import numpy as np
 
+timestamp = datetime.now().strftime("%m%d_%H%M")  
+exp_name = f'Diffusion_Train_{timestamp}'
 
 
 # define beta schedule
-betas = quadratic_beta_schedule(timesteps=timesteps)
+# betas = quadratic_beta_schedule(timesteps=timesteps)
+betas = cosine_beta_schedule(timesteps=diff_num_steps)
 
 # define alphas 
 alphas = 1. - betas
@@ -92,70 +90,14 @@ def extract(a, t, x_shape):
 
 from torchvision.transforms import Compose, ToTensor, Lambda, ToPILImage, CenterCrop, Resize
 
-# forward diffusion (using the nice property)
-def q_sample(x_start, t, noise=None):
-    if noise is None:
-        noise = torch.randn_like(x_start)
-
-    sqrt_alphas_cumprod_t = extract(sqrt_alphas_cumprod, t, x_start.shape)
-    sqrt_one_minus_alphas_cumprod_t = extract(
-        sqrt_one_minus_alphas_cumprod, t, x_start.shape
-    )
-
-    return sqrt_alphas_cumprod_t * x_start + sqrt_one_minus_alphas_cumprod_t * noise
-
 
 channels = 1
 global_batch_size = 32
 
 # test_spike_data = test_spike_data.transpose(0,1,3,2)
 
-
-
 from torchvision import transforms
 from torch.utils.data import DataLoader
-
-
-@torch.no_grad()
-def p_sample(model, x, t, t_index):
-    betas_t = extract(betas, t, x.shape)
-    sqrt_one_minus_alphas_cumprod_t = extract(
-        sqrt_one_minus_alphas_cumprod, t, x.shape
-    )
-    sqrt_recip_alphas_t = extract(sqrt_recip_alphas, t, x.shape)
-    
-
-    model_mean = sqrt_recip_alphas_t * (
-        x - betas_t * model(x, t) / sqrt_one_minus_alphas_cumprod_t
-    )
-
-    if t_index == 0:
-        return model_mean
-    else:
-        posterior_variance_t = extract(posterior_variance, t, x.shape)
-        noise = torch.randn_like(x)
-        # Algorithm 2 line 4:
-        return model_mean + torch.sqrt(posterior_variance_t) * noise 
-
-
-@torch.no_grad()
-def p_sample_loop(model, shape):
-    device = next(model.parameters()).device
-
-    b = shape[0]
-
-    img = torch.randn(shape, device=device)
-    imgs = []
-
-    for i in tqdm(reversed(range(0, timesteps)), desc='sampling loop time step', total=timesteps):
-        img = p_sample(model, img, torch.full((b,), i, device=device, dtype=torch.long), i)
-        imgs.append(img.cpu().numpy())
-    return imgs
-
-@torch.no_grad()
-def sample(model, image_size, batch_size=16, channels=3):
-    return p_sample_loop(model, shape=(batch_size, channels, seq_len, latent_len))
-
 from pathlib import Path
 
 def num_to_groups(num, divisor):
@@ -169,12 +111,16 @@ def num_to_groups(num, divisor):
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
+print("Running the Train Code")
 
 input_dim = 1
 
 
 dm_model = diff_STBlock(input_dim)
 dm_model.to(device)
+
+ema = EMA(dm_model, decay=0.995)  
+
 
 dm_optimizer = Adam(dm_model.parameters(), lr=1e-3)
 # model
@@ -189,9 +135,38 @@ from torchvision import transforms
 from torch.utils.data import DataLoader
 
 
+import numpy as np
+import scipy.interpolate
 
 
 train_latents = np.load("../npy_files/train_latents.npy")
+num_samples, seq_len, latent_dim = train_latents.shape
+
+def add_gaussian_noise(latents, factor=0.08):
+    noise_level = factor * np.std(latents)
+    noisy_data = latents + np.random.normal(0, noise_level, latents.shape)
+    return noisy_data
+
+import numpy as np
+
+def add_gaussian_noise(latents, factor=0.08):
+    """Adds Gaussian noise to the latent representations."""
+    noise_level = factor * np.std(latents)
+    return latents + np.random.normal(0, noise_level, latents.shape)
+
+
+noisy_latents = [add_gaussian_noise(train_latents) for _ in range(9)]
+
+
+augmented_latents = np.concatenate([
+    train_latents, 
+    *noisy_latents 
+], axis=0)
+
+
+
+train_latents = augmented_latents
+
 
 
 seq_len, latent_len = train_latents.shape[1], train_latents.shape[2]
@@ -220,19 +195,22 @@ for epoch in range(n_epochs):
 
         loss = p_losses(dm_model, batch, t)
 
-        # print("Step", step, " Loss:", loss.item())
-        # print(f"total Loss of Step {step} is {loss.item():.4f}")
 
         total_loss += loss.item()
 
         loss.backward()
         dm_optimizer.step()
+
+        ema.update(dm_model)  
     
     total_loss_array[epoch] = total_loss
+
+
     print(f"total Loss of epoch {epoch} is {total_loss:.4f}")
 
     if total_loss < pre_loss:
         pre_loss = total_loss
-        torch.save(dm_model.state_dict(), '../model_checkpoints/source_diffusion_model.pth')
+        # torch.save(dm_model.state_dict(), f'../model_checkpoints/source_diffusion_model_public_{timesteps}.pth')
+        torch.save(dm_model.state_dict(), f'../model_checkpoints/source_diffusion_model.pth')
 
-np.save('../npy_files/diffusion_total_loss_array.npy',total_loss_array)
+# ema.apply(dm_model)
