@@ -70,7 +70,7 @@ If you find the code useful for your research, please consider citing our work:
 }
 ```
 
-### **Poster for NeurIPS 2023**
+## **Poster for NeurIPS 2023**
 
 ###  ![results](images/ERDiff_NeurIPS23_Poster_Final.png)
 

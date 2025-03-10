@@ -1,0 +1,7 @@
+/coc/flash12/ywang4138/ERDiff/scripts/mla.py:81: DeprecationWarning: Importing gaussian from 'scipy.signal' is deprecated since SciPy 1.1.0 and will raise an error in SciPy 1.13.0. Please use 'scipy.signal.windows.gaussian' or the convenience function 'scipy.signal.get_window' instead.
+  window = signal.gaussian(kern_sd, kern_sd, sym=True)
+/srv/wu-lab/flash12/ywang4138/anaconda3/envs/yule-dv/lib/python3.11/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference performance)
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+srun: Job step aborted: Waiting up to 302 seconds for job step to finish.
+slurmstepd: error: *** STEP 399427.0 ON cyborg CANCELLED AT 2025-03-09T18:13:25 ***
+slurmstepd: error: *** JOB 399427 ON cyborg CANCELLED AT 2025-03-09T18:13:25 ***

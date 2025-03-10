@@ -1,0 +1,162 @@
+Config Data: {'learning_rate': 0.003, 'batch_size': 64, 'appro_alpha': 0.1, 'ot_weight': 1.0, 'epoches': 1000, 'seed': 2024}
+device: cuda
+spike_day_0 shape: torch.Size([168, 14, 187]), spike_day_k shape: torch.Size([168, 14, 172])
+Epoch of: 0 Perf:
+Aligned R-Squared: -62.3016 | Aligned RMSE: 13.1242
+--------------------
+Best_Metric at 0 is : -62.30158434341969
+Epoch of: 5 Perf:
+Aligned R-Squared: -50.6386 | Aligned RMSE: 12.5970
+--------------------
+Epoch of: 10 Perf:
+Aligned R-Squared: -38.3350 | Aligned RMSE: 12.0492
+--------------------
+Epoch of: 15 Perf:
+Aligned R-Squared: -30.6817 | Aligned RMSE: 11.6865
+--------------------
+Epoch of: 20 Perf:
+Aligned R-Squared: -23.7985 | Aligned RMSE: 11.3585
+--------------------
+Epoch of: 25 Perf:
+Aligned R-Squared: -17.1188 | Aligned RMSE: 11.0382
+--------------------
+Epoch of: 30 Perf:
+Aligned R-Squared: -12.2100 | Aligned RMSE: 10.7985
+--------------------
+Epoch of: 35 Perf:
+Aligned R-Squared: -7.8110 | Aligned RMSE: 10.5819
+--------------------
+Epoch of: 40 Perf:
+Aligned R-Squared: -5.1123 | Aligned RMSE: 10.4464
+--------------------
+Epoch of: 45 Perf:
+Aligned R-Squared: -3.8953 | Aligned RMSE: 10.3829
+--------------------
+Epoch of: 50 Perf:
+Aligned R-Squared: -2.3541 | Aligned RMSE: 10.3037
+--------------------
+Epoch of: 55 Perf:
+Aligned R-Squared: -1.7532 | Aligned RMSE: 10.2709
+--------------------
+Epoch of: 60 Perf:
+Aligned R-Squared: -0.0557 | Aligned RMSE: 10.1833
+--------------------
+Epoch of: 65 Perf:
+Aligned R-Squared: -0.1122 | Aligned RMSE: 10.1841
+--------------------
+Epoch of: 70 Perf:
+Aligned R-Squared: 1.2888 | Aligned RMSE: 10.1119
+--------------------
+Epoch of: 75 Perf:
+Aligned R-Squared: 1.7774 | Aligned RMSE: 10.0862
+--------------------
+Epoch of: 80 Perf:
+Aligned R-Squared: 2.7207 | Aligned RMSE: 10.0375
+--------------------
+Epoch of: 85 Perf:
+Aligned R-Squared: 3.3263 | Aligned RMSE: 10.0060
+--------------------
+Epoch of: 90 Perf:
+Aligned R-Squared: 3.7247 | Aligned RMSE: 9.9857
+--------------------
+Epoch of: 95 Perf:
+Aligned R-Squared: 4.6017 | Aligned RMSE: 9.9395
+--------------------
+Epoch of: 100 Perf:
+Aligned R-Squared: 5.4763 | Aligned RMSE: 9.8940
+--------------------
+Best_Metric at 100 is : 5.47627764146349
+Epoch of: 105 Perf:
+Aligned R-Squared: 6.5002 | Aligned RMSE: 9.8396
+--------------------
+Epoch of: 110 Perf:
+Aligned R-Squared: 6.9458 | Aligned RMSE: 9.8165
+--------------------
+Epoch of: 115 Perf:
+Aligned R-Squared: 7.4310 | Aligned RMSE: 9.7903
+--------------------
+Epoch of: 120 Perf:
+Aligned R-Squared: 8.6766 | Aligned RMSE: 9.7247
+--------------------
+Epoch of: 125 Perf:
+Aligned R-Squared: 9.2297 | Aligned RMSE: 9.6948
+--------------------
+Epoch of: 130 Perf:
+Aligned R-Squared: 9.9871 | Aligned RMSE: 9.6548
+--------------------
+Epoch of: 135 Perf:
+Aligned R-Squared: 10.4610 | Aligned RMSE: 9.6295
+--------------------
+Epoch of: 140 Perf:
+Aligned R-Squared: 10.8739 | Aligned RMSE: 9.6069
+--------------------
+Epoch of: 145 Perf:
+Aligned R-Squared: 11.4308 | Aligned RMSE: 9.5762
+--------------------
+Epoch of: 150 Perf:
+Aligned R-Squared: 11.4291 | Aligned RMSE: 9.5768
+--------------------
+Epoch of: 155 Perf:
+Aligned R-Squared: 10.3232 | Aligned RMSE: 9.6333
+--------------------
+Epoch of: 160 Perf:
+Aligned R-Squared: 11.3045 | Aligned RMSE: 9.5824
+--------------------
+Epoch of: 165 Perf:
+Aligned R-Squared: 11.6607 | Aligned RMSE: 9.5630
+--------------------
+Epoch of: 170 Perf:
+Aligned R-Squared: 11.9012 | Aligned RMSE: 9.5499
+--------------------
+Epoch of: 175 Perf:
+Aligned R-Squared: 12.0632 | Aligned RMSE: 9.5407
+--------------------
+Epoch of: 180 Perf:
+Aligned R-Squared: 12.3992 | Aligned RMSE: 9.5219
+--------------------
+Epoch of: 185 Perf:
+Aligned R-Squared: 12.7773 | Aligned RMSE: 9.5014
+--------------------
+Epoch of: 190 Perf:
+Aligned R-Squared: 12.8804 | Aligned RMSE: 9.4949
+--------------------
+Epoch of: 195 Perf:
+Aligned R-Squared: 12.7782 | Aligned RMSE: 9.5008
+--------------------
+Epoch of: 200 Perf:
+Aligned R-Squared: 13.0613 | Aligned RMSE: 9.4849
+--------------------
+Best_Metric at 200 is : 13.061322565934692
+Epoch of: 205 Perf:
+Aligned R-Squared: 13.1371 | Aligned RMSE: 9.4800
+--------------------
+Epoch of: 210 Perf:
+Aligned R-Squared: 12.8661 | Aligned RMSE: 9.4945
+--------------------
+Epoch of: 215 Perf:
+Aligned R-Squared: 13.0784 | Aligned RMSE: 9.4825
+--------------------
+Epoch of: 220 Perf:
+Aligned R-Squared: 12.6287 | Aligned RMSE: 9.5078
+--------------------
+Epoch of: 225 Perf:
+Aligned R-Squared: 13.3677 | Aligned RMSE: 9.4642
+--------------------
+Epoch of: 230 Perf:
+Aligned R-Squared: 13.5953 | Aligned RMSE: 9.4537
+--------------------
+Epoch of: 235 Perf:
+Aligned R-Squared: 13.3466 | Aligned RMSE: 9.4680
+--------------------
+Epoch of: 240 Perf:
+Aligned R-Squared: 13.6734 | Aligned RMSE: 9.4487
+--------------------
+Epoch of: 245 Perf:
+Aligned R-Squared: 13.7177 | Aligned RMSE: 9.4456
+--------------------
+Epoch of: 250 Perf:
+Aligned R-Squared: 13.3287 | Aligned RMSE: 9.4677
+--------------------
+Epoch of: 255 Perf:
+Aligned R-Squared: 13.3587 | Aligned RMSE: 9.4662
+--------------------

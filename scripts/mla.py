@@ -236,7 +236,6 @@ for epoch in range(epoches):
 
             # Testing Phase
             _, _, _, _, test_latents, _,_, x_after_lowd = MLA_model(spike_day_0, spike_day_k,p,q_test, train_flag = False)
-            print(test_latents.shape)
             test_latents = np.array(test_latents.cpu())
 
             vanilla_model_dict = torch.load('../model_checkpoints/vae_model_mla.pth', weights_only=True, map_location=torch.device('cpu'))
@@ -257,6 +256,6 @@ for epoch in range(epoches):
 
             if epoch % 100 == 0 or epoch == epoches - 1:
                 # best_metric
-                print(f"Best_Metric at {epoch} is : {best_metric}")
+                print(f"Best_Metric at {epoch} is : {best_metric:0.4f}")
                     
 
