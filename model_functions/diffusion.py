@@ -1,39 +1,27 @@
 import math
 from inspect import isfunction
-from functools import partial
-
-import matplotlib.pyplot as plt
 from tqdm.auto import tqdm
-
 
 import torch
 from torch import nn, einsum
 import torch.nn.functional as F
-
-import numpy as np
-import scipy.io as sio
-import matplotlib.pyplot as plt
-import os
-import sys
 from tqdm import tqdm_notebook
 
-
-from torch.optim import Adam
-
-import numpy as np
 
 # Hyper-parameters
 l_rate = 1e-3
 n_epochs = 500
-timesteps = 100
 
-diff_layers = 4
+# diff_num_steps
+# timesteps
+
+diff_layers = 3
 diff_channels = 32
 diff_nheads = 4
 diff_embedding_dim = 32
 diff_beta_start = 0.0001
 diff_beta_end = 0.5
-diff_num_steps = 200
+diff_timesteps = 100
 diff_cond_dim = 144
 
 def get_torch_trans(heads=8, layers=1, channels=64):
@@ -41,7 +29,6 @@ def get_torch_trans(heads=8, layers=1, channels=64):
         d_model=channels, nhead=heads, dim_feedforward=64, activation="gelu"
     )
     return nn.TransformerEncoder(encoder_layer, num_layers=layers)
-
 
 def Conv1d_with_init(in_channels, out_channels, kernel_size):
     layer = nn.Conv1d(in_channels, out_channels, kernel_size)
@@ -78,16 +65,16 @@ class DiffusionEmbedding(nn.Module):
 
 
 class diff_STBlock(nn.Module):
-    def __init__(self, inputdim=2):
+    def __init__(self, input_dim=2):
         super().__init__()
         self.channels = diff_channels
 
         self.diffusion_embedding = DiffusionEmbedding(
-            num_steps=diff_num_steps,
+            num_steps=diff_timesteps,
             embedding_dim=diff_embedding_dim,
         )
 
-        self.input_projection = Conv1d_with_init(inputdim, self.channels, 1)
+        self.input_projection = Conv1d_with_init(input_dim, self.channels, 1)
         self.output_projection1 = Conv1d_with_init(self.channels, self.channels, 1)
         self.output_projection2 = Conv1d_with_init(self.channels, 1, 1)
         nn.init.zeros_(self.output_projection2.weight)
@@ -104,9 +91,9 @@ class diff_STBlock(nn.Module):
         )
 
     def forward(self, x, diffusion_step):
-        B, inputdim, K, L = x.shape
+        B, input_dim, K, L = x.shape
 
-        x = x.reshape(B, inputdim, K * L)
+        x = x.reshape(B, input_dim, K * L)
         x = self.input_projection(x)
         x = F.relu(x)
         x = x.reshape(B, self.channels, K, L)
@@ -175,20 +162,19 @@ class STBlock(nn.Module):
         return (x + residual) / math.sqrt(2.0), skip
 
 
-
-def quadratic_beta_schedule(timesteps):
+def quadratic_beta_schedule(diff_timesteps):
     beta_start = 0.0001
     beta_end = 0.5
-    return torch.linspace(beta_start**0.5, beta_end**0.5, timesteps) ** 2
+    return torch.linspace(beta_start**0.5, beta_end**0.5, diff_timesteps) ** 2
 
 
-def cosine_beta_schedule(timesteps, s=0.008):
-    t = torch.linspace(0, timesteps, steps=timesteps + 1)
-    alphas_cumprod = torch.cos(((t / timesteps) + s) / (1 + s) * (math.pi / 2)) ** 2
+def cosine_beta_schedule(diff_timesteps, s=0.008):
+    t = torch.linspace(0, diff_timesteps, steps=diff_timesteps + 1)
+    alphas_cumprod = torch.cos(((t / diff_timesteps) + s) / (1 + s) * (math.pi / 2)) ** 2
     betas = 1 - (alphas_cumprod[1:] / alphas_cumprod[:-1])
     return torch.clip(betas, 0, 0.999)
 
-betas = cosine_beta_schedule(timesteps=diff_num_steps)
+betas = cosine_beta_schedule(diff_timesteps=diff_timesteps)
 
 
 # define beta schedule
@@ -212,7 +198,6 @@ def extract(a, t, x_shape):
     out = a.gather(-1, t.cpu())
     return out.reshape(batch_size, *((1,) * (len(x_shape) - 1))).to(t.device)
 
-from torchvision.transforms import Compose, ToTensor, Lambda, ToPILImage, CenterCrop, Resize
 
 # forward diffusion (using the nice property)
 def q_sample(x_start, t, noise=None):
@@ -271,11 +256,10 @@ def p_sample_loop(model, shape):
     img = torch.randn(shape, device=device)
     imgs = []
 
-    for i in tqdm(reversed(range(0, timesteps)), desc='sampling loop time step', total=timesteps):
+    for i in tqdm(reversed(range(0, diff_timesteps)), desc='sampling loop time step', total=diff_timesteps):
         img = p_sample(model, img, torch.full((b,), i, device=device, dtype=torch.long), i)
     # imgs.append(img.cpu().numpy())
     return img.cpu().numpy()
-
 
 
 class EMA:
@@ -283,7 +267,6 @@ class EMA:
         self.model = model
         self.decay = decay
         
-
         device = next(model.parameters()).device  
 
         self.shadow = {k: v.clone().detach().to(device) for k, v in model.named_parameters()}
@@ -291,8 +274,8 @@ class EMA:
     def update(self, model):
         with torch.no_grad():
             for k, v in model.named_parameters():
-                self.shadow[k] = self.shadow[k].to(v.device)  
+                self.shadow[k] = self.shadow[k].to(v.device)
                 self.shadow[k] = self.decay * self.shadow[k] + (1.0 - self.decay) * v.clone().detach()
 
     def apply(self, model):
-        model.load_state_dict(self.shadow, strict=False) 
+        model.load_state_dict(self.shadow, strict=False)

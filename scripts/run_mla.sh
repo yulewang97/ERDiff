@@ -5,13 +5,14 @@
 #SBATCH --partition="wu-lab"
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=16
-#SBATCH --gpus-per-node="a40:1"
-#SBATCH --qos="long"
+#SBATCH --cpus-per-task=8
+#SBATCH --gpus=1
+#SBATCH --qos="short"
 #SBATCH --exclude="clippy"
 #SBATCH --mem-per-gpu="32G"
 
 export PYTHONUNBUFFERED=TRUE
+
 
 srun -u python3 -u mla.py \
     --learning_rate 3e-3 \

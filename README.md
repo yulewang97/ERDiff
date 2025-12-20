@@ -13,7 +13,7 @@
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
 
-## March 8 Update  
+## March 8, 2025 Update  
 
 A new tag **v1.0.1** has been created.
 

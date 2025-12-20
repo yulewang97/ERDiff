@@ -1,19 +1,12 @@
-import math
 from inspect import isfunction
-from functools import partial
-
-import matplotlib.pyplot as plt
-from tqdm.auto import tqdm
 
 import torch
 from torch import nn, einsum
 import torch.nn.functional as F
 
 import numpy as np
-import scipy.io as sio
-import matplotlib.pyplot as plt
 import os
-import yaml
+import wandb
 import sys
 from datetime import datetime
 from tqdm import tqdm_notebook
@@ -21,35 +14,33 @@ from sklearn.metrics import r2_score
 from sklearn.metrics import explained_variance_score
 import random
 from torch.optim import Adam
+from torchvision.utils import save_image
 
-import os
-import sys
-
+from torchvision import transforms
+from torch.utils.data import DataLoader
 
 parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(parent_dir)
-
 
 import logging
 
 from model_functions.diffusion import *
 from model_functions.vae import *
-from model_functions.erdiff_utils import *
+from model_functions.dataloader import AddGaussianNoise, LatentDataset
+from torchvision.transforms import ToTensor
 
 logger = logging.getLogger('train_logger')
 logger.setLevel(level=logging.INFO)
 handler = logging.FileHandler('train.log')
 handler.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter('%(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
-# logger.addHandler(console)
+
 logger.info('python logging test')
 
-import pickle
 
-
-# Training``
+# Training
 def setup_seed(seed):
      torch.manual_seed(seed)
      torch.cuda.manual_seed_all(seed)
@@ -59,18 +50,15 @@ def setup_seed(seed):
 setup_seed(2024)
 
 
-
-import numpy as np
-
-timestamp = datetime.now().strftime("%m%d_%H%M")  
-exp_name = f'Diffusion_Train_{timestamp}'
-
+timestamp = datetime.now().strftime("%m%d_%H%M")
+exp_name = f'Diffusion_Train{timestamp}'
+wandb.init(project="ERDiff", name=exp_name, config={})
 
 # define beta schedule
 # betas = quadratic_beta_schedule(timesteps=timesteps)
-betas = cosine_beta_schedule(timesteps=diff_num_steps)
+betas = cosine_beta_schedule(diff_timesteps=diff_timesteps)
 
-# define alphas 
+# define alphas
 alphas = 1. - betas
 alphas_cumprod = torch.cumprod(alphas, axis=0)
 alphas_cumprod_prev = F.pad(alphas_cumprod[:-1], (1, 0), value=1.0)
@@ -88,17 +76,10 @@ def extract(a, t, x_shape):
     out = a.gather(-1, t.cpu())
     return out.reshape(batch_size, *((1,) * (len(x_shape) - 1))).to(t.device)
 
-from torchvision.transforms import Compose, ToTensor, Lambda, ToPILImage, CenterCrop, Resize
-
 
 channels = 1
-global_batch_size = 32
+batch_size = 32
 
-# test_spike_data = test_spike_data.transpose(0,1,3,2)
-
-from torchvision import transforms
-from torch.utils.data import DataLoader
-from pathlib import Path
 
 def num_to_groups(num, divisor):
     groups = num // divisor
@@ -108,75 +89,40 @@ def num_to_groups(num, divisor):
         arr.append(remainder)
     return arr
 
-
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-print("Running the Train Code")
-
 input_dim = 1
-
 
 dm_model = diff_STBlock(input_dim)
 dm_model.to(device)
 
-ema = EMA(dm_model, decay=0.995)  
+ema = EMA(dm_model, decay=0.995)
 
 
 dm_optimizer = Adam(dm_model.parameters(), lr=1e-3)
 # model
 
-from torchvision.utils import save_image
+pre_loss = float('inf')
 
-
-pre_loss = 1e10
-
-
-from torchvision import transforms
-from torch.utils.data import DataLoader
-
-
-import numpy as np
-import scipy.interpolate
-
-
+# Data Loading
 train_latents = np.load("../npy_files/train_latents.npy")
 num_samples, seq_len, latent_dim = train_latents.shape
 
-def add_gaussian_noise(latents, factor=0.08):
-    noise_level = factor * np.std(latents)
-    noisy_data = latents + np.random.normal(0, noise_level, latents.shape)
-    return noisy_data
+transform = transforms.Compose([
+    ToTensor(),
+    AddGaussianNoise(factor=0.075),
+])
 
-import numpy as np
+dataset = LatentDataset(train_latents, transform=transform)
 
-def add_gaussian_noise(latents, factor=0.08):
-    """Adds Gaussian noise to the latent representations."""
-    noise_level = factor * np.std(latents)
-    return latents + np.random.normal(0, noise_level, latents.shape)
-
-
-noisy_latents = [add_gaussian_noise(train_latents) for _ in range(9)]
-
-
-augmented_latents = np.concatenate([
-    train_latents, 
-    *noisy_latents 
-], axis=0)
-
-
-
-train_latents = augmented_latents
-
-
+logger.info(f"Data Shape after Augmentation: {train_latents.shape}")
 
 seq_len, latent_len = train_latents.shape[1], train_latents.shape[2]
-
 
 train_latents = np.expand_dims(train_latents,1).astype(np.float32)
 train_spike_data = train_latents.transpose(0,1,3,2)
 
-
-dataloader = DataLoader(train_spike_data, batch_size=global_batch_size)
+dataloader = DataLoader(dataset, batch_size=batch_size)
 
 batch = next(iter(dataloader))
 
@@ -190,27 +136,24 @@ for epoch in range(n_epochs):
         batch_size = batch.shape[0]
         batch = batch.to(device)
 
-
-        t = torch.randint(0, timesteps, (batch_size,), device=device).long()
+        t = torch.randint(0, diff_timesteps, (batch_size,), device=device).long()
 
         loss = p_losses(dm_model, batch, t)
-
 
         total_loss += loss.item()
 
         loss.backward()
         dm_optimizer.step()
 
-        ema.update(dm_model)  
+        ema.update(dm_model)  # update EMA parameters
     
     total_loss_array[epoch] = total_loss
+    wandb.log({
+        "total_epoch_loss": total_loss / 1.
+    })
 
-
-    print(f"total Loss of epoch {epoch} is {total_loss:.4f}")
+    logger.info(f"total Loss of epoch {epoch} is {total_loss:.4f}")
 
     if total_loss < pre_loss:
         pre_loss = total_loss
-        # torch.save(dm_model.state_dict(), f'../model_checkpoints/source_diffusion_model_public_{timesteps}.pth')
         torch.save(dm_model.state_dict(), f'../model_checkpoints/source_diffusion_model.pth')
-
-# ema.apply(dm_model)
