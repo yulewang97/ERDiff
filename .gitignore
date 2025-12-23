@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+erdiff/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Model checkpoints (if large)
+# model_checkpoints/*.pth
+
+# Data files (if large)
+# datasets/*.pkl
+# npy_files/*.npy
+
+# Outputs
+outputs/
+*.log
+
+# SLURM output
+slurm_output/*.out
+slurm_output/*.err
