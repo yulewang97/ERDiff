@@ -1,7 +1,6 @@
 from inspect import isfunction
 
 import torch
-from torch import nn, einsum
 import torch.nn.functional as F
 
 import numpy as np
@@ -13,7 +12,7 @@ from tqdm import tqdm_notebook
 from sklearn.metrics import r2_score
 from sklearn.metrics import explained_variance_score
 import random
-from torch.optim import Adam
+from torch.optim import AdamW
 from torchvision.utils import save_image
 
 from torchvision import transforms
@@ -36,7 +35,6 @@ handler.setLevel(logging.INFO)
 formatter = logging.Formatter('%(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
-
 logger.info('python logging test')
 
 
@@ -51,7 +49,7 @@ setup_seed(2024)
 
 
 timestamp = datetime.now().strftime("%m%d_%H%M")
-exp_name = f'Diffusion_Train{timestamp}'
+exp_name = f'Diffusion_Train_{timestamp}'
 wandb.init(project="ERDiff", name=exp_name, config={})
 
 # define beta schedule
@@ -79,6 +77,7 @@ def extract(a, t, x_shape):
 
 channels = 1
 batch_size = 32
+n_epochs = 500
 
 
 def num_to_groups(num, divisor):
@@ -91,21 +90,24 @@ def num_to_groups(num, divisor):
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
+logger.info("Running the Train Code")
+
 input_dim = 1
 
-dm_model = diff_STBlock(input_dim)
+dm_model = Diff_STDiT(input_dim)
 dm_model.to(device)
 
 ema = EMA(dm_model, decay=0.995)
 
 
-dm_optimizer = Adam(dm_model.parameters(), lr=1e-3)
-# model
+dm_optimizer = AdamW(dm_model.parameters(), lr=5e-4)
 
 pre_loss = float('inf')
 
 # Data Loading
-train_latents = np.load("../npy_files/train_latents.npy")
+train_latents = np.load("../npy_files/train_latents_refactor.npy")
+
+
 num_samples, seq_len, latent_dim = train_latents.shape
 
 transform = transforms.Compose([
@@ -124,9 +126,7 @@ train_spike_data = train_latents.transpose(0,1,3,2)
 
 dataloader = DataLoader(dataset, batch_size=batch_size)
 
-batch = next(iter(dataloader))
 
-total_loss_array = np.zeros(n_epochs)
 
 for epoch in range(n_epochs):
     total_loss = 0
@@ -139,21 +139,21 @@ for epoch in range(n_epochs):
         t = torch.randint(0, diff_timesteps, (batch_size,), device=device).long()
 
         loss = p_losses(dm_model, batch, t)
-
         total_loss += loss.item()
 
         loss.backward()
         dm_optimizer.step()
 
         ema.update(dm_model)  # update EMA parameters
+
+    if (epoch + 1) % 50 == 0:
+        logger.info(f"Total Loss of epoch {epoch} is {total_loss:.4f}")
     
-    total_loss_array[epoch] = total_loss
     wandb.log({
         "total_epoch_loss": total_loss / 1.
     })
 
-    logger.info(f"total Loss of epoch {epoch} is {total_loss:.4f}")
 
     if total_loss < pre_loss:
         pre_loss = total_loss
-        torch.save(dm_model.state_dict(), f'../model_checkpoints/source_diffusion_model.pth')
+        torch.save(dm_model.state_dict(), f'../model_checkpoints/source_diffusion_model_{diff_timesteps}.pth')

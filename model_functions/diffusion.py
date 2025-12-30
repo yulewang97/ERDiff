@@ -8,21 +8,11 @@ import torch.nn.functional as F
 from tqdm import tqdm_notebook
 
 
-# Hyper-parameters
-l_rate = 1e-3
-n_epochs = 500
-
-# diff_num_steps
 # timesteps
-
-diff_layers = 3
-diff_channels = 32
-diff_nheads = 4
 diff_embedding_dim = 32
 diff_beta_start = 0.0001
 diff_beta_end = 0.5
 diff_timesteps = 100
-diff_cond_dim = 144
 
 def get_torch_trans(heads=8, layers=1, channels=64):
     encoder_layer = nn.TransformerEncoderLayer(
@@ -64,61 +54,11 @@ class DiffusionEmbedding(nn.Module):
         return table
 
 
-class diff_STBlock(nn.Module):
-    def __init__(self, input_dim=2):
-        super().__init__()
-        self.channels = diff_channels
-
-        self.diffusion_embedding = DiffusionEmbedding(
-            num_steps=diff_timesteps,
-            embedding_dim=diff_embedding_dim,
-        )
-
-        self.input_projection = Conv1d_with_init(input_dim, self.channels, 1)
-        self.output_projection1 = Conv1d_with_init(self.channels, self.channels, 1)
-        self.output_projection2 = Conv1d_with_init(self.channels, 1, 1)
-        nn.init.zeros_(self.output_projection2.weight)
-
-        self.STBlock_layers = nn.ModuleList(
-            [
-                STBlock(
-                    channels=self.channels,
-                    diffusion_embedding_dim=diff_embedding_dim,
-                    nheads=diff_nheads,
-                )
-                for _ in range(diff_layers)
-            ]
-        )
-
-    def forward(self, x, diffusion_step):
-        B, input_dim, K, L = x.shape
-
-        x = x.reshape(B, input_dim, K * L)
-        x = self.input_projection(x)
-        x = F.relu(x)
-        x = x.reshape(B, self.channels, K, L)
-
-        diffusion_emb = self.diffusion_embedding(diffusion_step)
-
-        skip = []
-        for layer in self.STBlock_layers:
-            x, skip_connection = layer(x, diffusion_emb)
-            skip.append(skip_connection)
-
-        x = torch.sum(torch.stack(skip), dim=0) / math.sqrt(len(self.STBlock_layers))
-        x = x.reshape(B, self.channels, K * L)
-        x = self.output_projection1(x)  
-        x = F.relu(x)
-        x = self.output_projection2(x) 
-        x = x.reshape(B, 1, K, L)
-        return x
-
-
 class STBlock(nn.Module):
     def __init__(self, channels, diffusion_embedding_dim, nheads):
         super().__init__()
         self.diffusion_projection = nn.Linear(diffusion_embedding_dim, channels)
-        self.cond_projection = Conv1d_with_init(diff_cond_dim, 2 * channels, 1)
+        # self.cond_projection = Conv1d_with_init(diff_cond_dim, 2 * channels, 1)
         self.mid_projection = Conv1d_with_init(channels, 2 * channels, 1)
         self.output_projection = Conv1d_with_init(channels, 2 * channels, 1)
 
@@ -149,7 +89,7 @@ class STBlock(nn.Module):
 
         y = self.forward_temporal(y, base_shape)
         y = self.forward_spatio(y, base_shape) 
-        y = self.mid_projection(y)  
+        y = self.mid_projection(y)
 
         gate, filter = torch.chunk(y, 2, dim=1)
         y = torch.sigmoid(gate) * torch.tanh(filter)  
@@ -160,6 +100,58 @@ class STBlock(nn.Module):
         residual = residual.reshape(base_shape)
         skip = skip.reshape(base_shape)
         return (x + residual) / math.sqrt(2.0), skip
+
+
+class Diff_STDiT(nn.Module):
+    def __init__(self, input_dim=2):
+        super().__init__()
+        self.channels = 32
+        self.diff_layers = 3
+        self.diff_nheads = 4
+
+        self.diffusion_embedding = DiffusionEmbedding(
+            num_steps=diff_timesteps,
+            embedding_dim=diff_embedding_dim,
+        )
+
+        self.input_projection = Conv1d_with_init(input_dim, self.channels, 1)
+        self.output_projection1 = Conv1d_with_init(self.channels, self.channels, 1)
+        self.output_projection2 = Conv1d_with_init(self.channels, 1, 1)
+        nn.init.zeros_(self.output_projection2.weight)
+
+        self.STBlock_layers = nn.ModuleList(
+            [
+                STBlock(
+                    channels=self.channels,
+                    diffusion_embedding_dim=diff_embedding_dim,
+                    nheads=self.diff_nheads,
+                )
+                for _ in range(self.diff_layers)
+            ]
+        )
+
+    def forward(self, x, diffusion_step):
+        B, input_dim, K, L = x.shape
+
+        x = x.reshape(B, input_dim, K * L)
+        x = self.input_projection(x)
+        x = F.relu(x)
+        x = x.reshape(B, self.channels, K, L)
+
+        diffusion_emb = self.diffusion_embedding(diffusion_step)
+
+        skip = []
+        for layer in self.STBlock_layers:
+            x, skip_connection = layer(x, diffusion_emb)
+            skip.append(skip_connection)
+
+        x = torch.sum(torch.stack(skip), dim=0) / math.sqrt(len(self.STBlock_layers))
+        x = x.reshape(B, self.channels, K * L)
+        x = self.output_projection1(x)  
+        x = F.relu(x)
+        x = self.output_projection2(x)
+        x = x.reshape(B, 1, K, L)
+        return x
 
 
 def quadratic_beta_schedule(diff_timesteps):
@@ -177,10 +169,7 @@ def cosine_beta_schedule(diff_timesteps, s=0.008):
 betas = cosine_beta_schedule(diff_timesteps=diff_timesteps)
 
 
-# define beta schedule
-# betas = quadratic_beta_schedule(timesteps=diff_num_steps)
-
-# define alphas 
+# define alphas
 alphas = 1. - betas
 alphas_cumprod = torch.cumprod(alphas, axis=0)
 alphas_cumprod_prev = F.pad(alphas_cumprod[:-1], (1, 0), value=1.0)
@@ -208,8 +197,7 @@ def q_sample(x_start, t, noise=None):
     sqrt_one_minus_alphas_cumprod_t = extract(
         sqrt_one_minus_alphas_cumprod, t, x_start.shape
     )
-#     print(sqrt_alphas_cumprod_t)
-#     print(sqrt_one_minus_alphas_cumprod_t)
+
     return sqrt_alphas_cumprod_t * x_start + sqrt_one_minus_alphas_cumprod_t * noise
 
 def p_losses(denoise_model, x_start, t, noise=None):
