@@ -52,6 +52,16 @@ cd scripts/ && sbatch run_mla.sh
 
 The alignment process across epochs can be viewed in `scripts/mla_erdiff_398637.out`.
 
+To run inference using the trained models, run:
+```bash
+cd scripts/ && sbatch run_inference.sh
+```
+
+Or run directly with Python:
+```bash
+cd scripts/ && python3 inference.py --model_path ../model_checkpoints/vae_model_mla.pth --device cuda
+```
+
 ## **Neural Latent Trajectories and their Dynamics Visualization**
 
 ###  ![results](images/results_aligned.png)
