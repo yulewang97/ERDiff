@@ -42,8 +42,8 @@ print("Config Data:", config)
 from model_functions.diffusion import diff_STBlock, q_sample
 from model_functions.mla_model import VAE_MLA_Model
 from model_functions.vae_readout import VAE_Readout_Model
-from utils_scripts.utils_torch import vel_cal, create_dir_dict
-from utils_scripts.utils_torch import setup_seed, SpikeDataset, logger_performance
+from utils.utils_torch import vel_cal, create_dir_dict
+from utils.utils_torch import setup_seed, SpikeDataset, logger_performance
 from torch.utils.data import DataLoader
 from sklearn.metrics import explained_variance_score
 from sklearn.metrics import r2_score
