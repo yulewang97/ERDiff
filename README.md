@@ -13,6 +13,14 @@
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
 
+## May 9, 2026 Update
+
+A new tag **v2.0.0** has been created.
+
+### Changes:
+- This update makes the overall diffusion alignment process robust.
+
+
 ## March 8, 2025 Update  
 
 A new tag **v1.0.1** has been created.
