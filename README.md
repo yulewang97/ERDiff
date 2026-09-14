@@ -13,6 +13,37 @@
 <div align=center><img src="images/ERDiff_main_github.png", width="650"></div>
 
 
+## Sep 14, 2026 Update
+
+We report results from the ERDiff **v2.0.0** implementation on two public datasets: **CO-M** (center-out reaching, Monkey M) and **RT-M** (random-target reaching, Monkey M).
+
+Datasets used here are available at Dryad: [https://datadryad.org/dataset/doi:10.5061/dryad.cvdncjt7n](https://datadryad.org/dataset/doi:10.5061/dryad.cvdncjt7n).
+
+Values are velocity decoding **R² scores (%)**, reported as **mean ± standard deviation over five runs**.
+
+| Dataset | Target session | ERDiff R² (%) |
+| :--- | :--- | ---: |
+| CO-M | Day 8 | 34.32 ± 4.58 |
+| CO-M | Day 14 | 44.67 ± 3.79 |
+| CO-M | Day 15 | 8.02 ± 3.40 |
+| CO-M | Day 22 | 14.67 ± 9.88 |
+| CO-M | Day 24 | 17.62 ± 5.41 |
+| CO-M | Day 25 | 9.59 ± 4.77 |
+| CO-M | Day 28 | 8.38 ± 12.97 |
+| CO-M | Day 29 | 11.01 ± 1.56 |
+| CO-M | Day 31 | 34.42 ± 2.99 |
+| CO-M | Day 32 | 31.24 ± 2.89 |
+| RT-M | Day 1 | 71.55 ± 0.44 |
+| RT-M | Day 38 | 55.75 ± 1.15 |
+| RT-M | Day 39 | 42.50 ± 0.56 |
+| RT-M | Day 40 | 53.43 ± 0.36 |
+| RT-M | Day 52 | 49.79 ± 0.86 |
+| RT-M | Day 53 | 53.33 ± 0.78 |
+| RT-M | Day 67 | 53.49 ± 0.57 |
+| RT-M | Day 69 | 48.48 ± 11.08 |
+| RT-M | Day 77 | 25.18 ± 1.71 |
+| RT-M | Day 79 | 9.03 ± 2.59 |
+
 ## May 9, 2026 Update
 
 A new tag **v2.0.0** has been created.
