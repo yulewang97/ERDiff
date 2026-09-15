@@ -24,7 +24,7 @@ Values are velocity decoding **R² scores (%)**, reported as **mean ± standard 
 **CO-M**
 
 | Target session | ERDiff R² (%) |
-| :--- | ---: |
+| :---: | :---: |
 | Day 8 | 34.32 ± 4.58 |
 | Day 14 | 44.67 ± 3.79 |
 | Day 15 | 8.02 ± 3.40 |
@@ -39,7 +39,7 @@ Values are velocity decoding **R² scores (%)**, reported as **mean ± standard 
 **RT-M**
 
 | Target session | ERDiff R² (%) |
-| :--- | ---: |
+| :---: | :---: |
 | Day 1 | 71.55 ± 0.44 |
 | Day 38 | 55.75 ± 1.15 |
 | Day 39 | 42.50 ± 0.56 |
